@@ -1,7 +1,32 @@
-import React from "react";
+import React, { use, useState } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../provider/AuthContext";
 
 const Login = () => {
+  const [error, setError] = useState();
+  const { handleSignInUser } = use(AuthContext);
+
+  //
+  const handleSignIn = (e) => {
+    e.preventDefault();
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password);
+
+    handleSignInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+
+        // const errorMessage = error.message;
+        setError(errorCode);
+      });
+  };
+
+  //
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col">
@@ -17,7 +42,7 @@ const Login = () => {
 
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
-            <form className="fieldset">
+            <form onSubmit={handleSignIn} className="fieldset">
               {/* email */}
               <label className="label">Email</label>
               <input
@@ -39,6 +64,8 @@ const Login = () => {
               />
 
               <button className="btn btn-neutral mt-4">Login</button>
+
+              {error && <p className="text-red-600">{error}</p>}
             </form>
 
             {/* Google */}
