@@ -5,6 +5,8 @@
   themes: light --default;
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 .font-roboto {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
