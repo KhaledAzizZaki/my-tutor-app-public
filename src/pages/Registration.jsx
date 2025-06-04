@@ -1,12 +1,35 @@
 import React, { use } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
+import { Bounce, toast } from "react-toastify";
 
 const Registration = () => {
-  const { handleCreateUser } = use(AuthContext);
+  const { handleCreateUser, handleGoogleSignIn } = use(AuthContext);
 
   const navigate = useNavigate();
 
+  //
+  const googleSignIn = () => {
+    handleGoogleSignIn()
+      .then(() => {
+        toast.success("Login successfully", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      })
+      .catch(() => {
+        //
+      });
+  };
+
+  //
   const handleSignUp = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -85,8 +108,12 @@ const Registration = () => {
 
               <button className="btn btn-neutral mt-4">Register</button>
             </form>
+
             {/* Google */}
-            <button className="btn bg-white text-black border-neutral">
+            <button
+              onClick={googleSignIn}
+              className="btn bg-white text-black border-neutral"
+            >
               <svg
                 aria-label="Google logo"
                 width="16"

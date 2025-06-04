@@ -5,7 +5,28 @@ import { Bounce, toast } from "react-toastify";
 
 const Login = () => {
   const [error, setError] = useState();
-  const { handleSignInUser } = use(AuthContext);
+  const { handleSignInUser, handleGoogleSignIn } = use(AuthContext);
+
+  //
+  const googleSignIn = () => {
+    handleGoogleSignIn()
+      .then(() => {
+        toast.success("Login successfully", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      })
+      .catch(() => {
+        //
+      });
+  };
 
   //
   const handleSignIn = (e) => {
@@ -94,7 +115,10 @@ const Login = () => {
             </form>
 
             {/* Google */}
-            <button className="btn bg-white text-black border-neutral">
+            <button
+              onClick={googleSignIn}
+              className="btn bg-white text-black border-neutral"
+            >
               <svg
                 aria-label="Google logo"
                 width="16"

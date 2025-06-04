@@ -3,8 +3,12 @@ import { auth } from "../../firebase.init";
 import { AuthContext } from "./AuthContext";
 import {
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
+  signInWithPopup,
 } from "firebase/auth";
+
+const provider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   //
@@ -18,9 +22,15 @@ const AuthProvider = ({ children }) => {
   };
 
   //
+  const handleGoogleSignIn = () => {
+    return signInWithPopup(auth, provider);
+  };
+
+  //
   const authData = {
     handleCreateUser,
     handleSignInUser,
+    handleGoogleSignIn,
   };
 
   return <AuthContext value={authData}>{children}</AuthContext>;
