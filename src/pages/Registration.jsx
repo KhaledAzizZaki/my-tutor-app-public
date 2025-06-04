@@ -1,7 +1,33 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { use } from "react";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../provider/AuthContext";
 
 const Registration = () => {
+  const { handleCreateUser } = use(AuthContext);
+
+  const navigate = useNavigate();
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const image = e.target.image.value;
+    console.log(name, email, password, image);
+
+    handleCreateUser(email, password)
+      .then((result) => {
+        navigate("/");
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+
+        console.log(errorCode);
+      });
+  };
+
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col">
@@ -16,7 +42,7 @@ const Registration = () => {
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
-            <form className="fieldset">
+            <form onSubmit={handleSignUp} className="fieldset">
               {/* Name */}
               <label className="label">Name</label>
               <input
