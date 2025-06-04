@@ -3,7 +3,7 @@ import { Navigate, NavLink } from "react-router";
 import { AuthContext } from "../../provider/AuthContext";
 
 const NavBar = () => {
-  const { handleSignOutUser } = use(AuthContext);
+  const { handleSignOutUser, user } = use(AuthContext);
 
   //
   const handleSignOut = () => {
@@ -36,12 +36,11 @@ const NavBar = () => {
       <li>
         <NavLink to={"/myBookedTutors"}>My booked tutors</NavLink>
       </li>
-      <li>
-        <NavLink to={"/login"}>Login</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/registration"}>Registration</NavLink>
-      </li>
+      {!user && (
+        <li>
+          <NavLink to={"/registration"}>Registration</NavLink>
+        </li>
+      )}
     </>
   );
 
@@ -83,9 +82,36 @@ const NavBar = () => {
           <ul className="menu menu-horizontal px-1">{link}</ul>
         </div>
 
-        <a onClick={handleSignOut} className="btn">
-          Logout
-        </a>
+        {user && (
+          <div className="relative inline-block group px-3">
+            <button className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img alt="User avatar" src={user.photoURL} />
+              </div>
+            </button>
+
+            <ul
+              className="absolute right-0 mt-3 w-52 bg-base-100 menu menu-sm rounded-box p-2 shadow
+                 opacity-0 invisible group-hover:opacity-100 group-hover:visible
+                 transition-all duration-300 z-10"
+            >
+              <li>
+                <p>Name: {user.displayName}</p>
+              </li>
+            </ul>
+          </div>
+        )}
+
+        {/* button */}
+        {user ? (
+          <a onClick={handleSignOut} className="btn">
+            Logout
+          </a>
+        ) : (
+          <NavLink to={"/login"} className="btn">
+            Login
+          </NavLink>
+        )}
       </div>
     </div>
   );

@@ -1,17 +1,21 @@
 import React, { use } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import { Bounce, toast } from "react-toastify";
 
 const Registration = () => {
-  const { handleCreateUser, handleGoogleSignIn, updateUser } = use(AuthContext);
+  const { handleCreateUser, handleGoogleSignIn, updateUser, setUser } =
+    use(AuthContext);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   //
   const googleSignIn = () => {
     handleGoogleSignIn()
       .then(() => {
+        navigate(`${location.state ? location.state : "/"}`);
+
         toast.success("Login successfully", {
           position: "top-right",
           autoClose: 5000,
@@ -32,20 +36,23 @@ const Registration = () => {
   //
   const handleSignUp = (e) => {
     e.preventDefault();
+
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     const image = e.target.image.value;
-    console.log(name, email, password, image);
+    // console.log(name, email, password, image);
 
     handleCreateUser(email, password)
       .then((result) => {
         navigate("/");
-        const user = result.user;
-        console.log(user);
+
+        // const user = result.user;
+        // console.log(user);
 
         updateUser({ displayName: name, photoURL: image })
           .then(() => {
+            setUser({ ...result.user, displayName: name, photoURL: image });
             //
           })
           .catch((error) => {
@@ -66,7 +73,7 @@ const Registration = () => {
       .catch((error) => {
         const errorCode = error.code;
 
-        console.log(errorCode);
+        // console.log(errorCode);
 
         toast.error(`${errorCode}`, {
           position: "top-right",
