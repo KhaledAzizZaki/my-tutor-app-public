@@ -4,7 +4,7 @@ import { AuthContext } from "../provider/AuthContext";
 import { Bounce, toast } from "react-toastify";
 
 const Registration = () => {
-  const { handleCreateUser, handleGoogleSignIn } = use(AuthContext);
+  const { handleCreateUser, handleGoogleSignIn, updateUser } = use(AuthContext);
 
   const navigate = useNavigate();
 
@@ -43,11 +43,42 @@ const Registration = () => {
         navigate("/");
         const user = result.user;
         console.log(user);
+
+        updateUser({ displayName: name, photoURL: image })
+          .then(() => {
+            //
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            toast.error(`${errorCode}`, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+            });
+          });
       })
       .catch((error) => {
         const errorCode = error.code;
 
         console.log(errorCode);
+
+        toast.error(`${errorCode}`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       });
   };
 
