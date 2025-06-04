@@ -1,6 +1,7 @@
 import React, { use, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
+import { Bounce, toast } from "react-toastify";
 
 const Login = () => {
   const [error, setError] = useState();
@@ -16,10 +17,34 @@ const Login = () => {
 
     handleSignInUser(email, password)
       .then((result) => {
+        toast.success("Login successfully", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+
         console.log(result.user);
       })
       .catch((error) => {
         const errorCode = error.code;
+
+        toast.error("Invalid email or password. Please try again.", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
 
         // const errorMessage = error.message;
         setError(errorCode);
