@@ -1,5 +1,5 @@
 import React, { use, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import { Bounce, toast } from "react-toastify";
 
@@ -7,10 +7,15 @@ const Login = () => {
   const [error, setError] = useState();
   const { handleSignInUser, handleGoogleSignIn } = use(AuthContext);
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
   //
   const googleSignIn = () => {
     handleGoogleSignIn()
       .then(() => {
+        navigate(`${location.state ? location.state : "/"}`);
+
         toast.success("Login successfully", {
           position: "top-right",
           autoClose: 5000,
@@ -38,6 +43,8 @@ const Login = () => {
 
     handleSignInUser(email, password)
       .then((result) => {
+        navigate(`${location.state ? location.state : "/"}`);
+
         toast.success("Login successfully", {
           position: "top-right",
           autoClose: 5000,
