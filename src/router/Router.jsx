@@ -5,6 +5,7 @@ import Registration from "../pages/Registration";
 import Login from "../pages/Login";
 import AddTutor from "../pages/AddTutor";
 import PrivateRoute from "../provider/PrivateRoute";
+import FindTutors from "../pages/FindTutors";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
             <AddTutor></AddTutor>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/findTutors",
+        element: <FindTutors></FindTutors>,
       },
     ],
   },
