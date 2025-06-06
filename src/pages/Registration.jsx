@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import { Bounce, toast } from "react-toastify";
+import axios from "axios";
 
 const Registration = () => {
   const { handleCreateUser, handleGoogleSignIn, updateUser, setUser } =
@@ -13,9 +14,25 @@ const Registration = () => {
   //
   const googleSignIn = () => {
     handleGoogleSignIn()
-      .then(() => {
+      .then((result) => {
         navigate(`${location.state ? location.state : "/"}`);
 
+        // console.log(result.user);
+        const { displayName, email, photoURL } = result.user;
+        // console.log(displayName);
+
+        //
+        axios
+          .post(`${import.meta.env.VITE_API_URL}/add-user`, {
+            displayName,
+            email,
+            photoURL,
+          })
+          .then((data) => {
+            console.log(data.data);
+          });
+
+        //
         toast.success("Login successfully", {
           position: "top-right",
           autoClose: 5000,
@@ -47,13 +64,22 @@ const Registration = () => {
       .then((result) => {
         navigate("/");
 
-        // const user = result.user;
+        const user = result.user;
         // console.log(user);
 
         updateUser({ displayName: name, photoURL: image })
           .then(() => {
             setUser({ ...result.user, displayName: name, photoURL: image });
             //
+            axios
+              .post(`${import.meta.env.VITE_API_URL}/add-user`, {
+                displayName: name,
+                email: user.email,
+                photoURL: image,
+              })
+              .then((data) => {
+                console.log(data.data);
+              });
           })
           .catch((error) => {
             const errorCode = error.code;

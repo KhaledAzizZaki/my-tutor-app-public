@@ -2,6 +2,7 @@ import React, { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import { Bounce, toast } from "react-toastify";
+import axios from "axios";
 
 const Login = () => {
   const [error, setError] = useState();
@@ -13,9 +14,25 @@ const Login = () => {
   //
   const googleSignIn = () => {
     handleGoogleSignIn()
-      .then(() => {
+      .then((result) => {
         navigate(`${location.state ? location.state : "/"}`);
 
+        //
+        const { displayName, email, photoURL } = result.user;
+        // console.log(displayName);
+
+        //
+        axios
+          .post(`${import.meta.env.VITE_API_URL}/add-user`, {
+            displayName,
+            email,
+            photoURL,
+          })
+          .then((data) => {
+            console.log(data.data);
+          });
+
+        //
         toast.success("Login successfully", {
           position: "top-right",
           autoClose: 5000,
