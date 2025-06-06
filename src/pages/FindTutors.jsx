@@ -1,16 +1,17 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import TutorCard from "../components/card/tutorCard";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const FindTutors = () => {
   const [tutors, setTutors] = useState([]);
+  const axiosSecure = useAxiosSecure();
 
   //
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/tutor`).then((result) => {
+    axiosSecure.get(`/tutor`).then((result) => {
       setTutors(result.data);
     });
-  }, []);
+  }, [axiosSecure]);
 
   console.log(tutors);
   //

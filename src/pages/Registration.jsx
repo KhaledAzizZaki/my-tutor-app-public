@@ -2,11 +2,12 @@ import React, { use } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import { Bounce, toast } from "react-toastify";
-import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Registration = () => {
   const { handleCreateUser, handleGoogleSignIn, updateUser, setUser } =
     use(AuthContext);
+  const axiosSecure = useAxiosSecure();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,8 +23,8 @@ const Registration = () => {
         // console.log(displayName);
 
         //
-        axios
-          .post(`${import.meta.env.VITE_API_URL}/add-user`, {
+        axiosSecure
+          .post(`/add-user`, {
             displayName,
             email,
             photoURL,
@@ -71,8 +72,8 @@ const Registration = () => {
           .then(() => {
             setUser({ ...result.user, displayName: name, photoURL: image });
             //
-            axios
-              .post(`${import.meta.env.VITE_API_URL}/add-user`, {
+            axiosSecure
+              .post(`/add-user`, {
                 displayName: name,
                 email: user.email,
                 photoURL: image,

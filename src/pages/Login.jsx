@@ -2,11 +2,12 @@ import React, { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import { Bounce, toast } from "react-toastify";
-import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Login = () => {
   const [error, setError] = useState();
   const { handleSignInUser, handleGoogleSignIn } = use(AuthContext);
+  const axiosSecure = useAxiosSecure();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -22,8 +23,8 @@ const Login = () => {
         // console.log(displayName);
 
         //
-        axios
-          .post(`${import.meta.env.VITE_API_URL}/add-user`, {
+        axiosSecure
+          .post(`/add-user`, {
             displayName,
             email,
             photoURL,

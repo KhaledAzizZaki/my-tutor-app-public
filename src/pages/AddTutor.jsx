@@ -1,9 +1,10 @@
 import React, { use } from "react";
 import { AuthContext } from "../provider/AuthContext";
-import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const AddTutor = () => {
   const { user } = use(AuthContext);
+  const axiosSecure = useAxiosSecure();
 
   //
   const handleAddTask = (e) => {
@@ -15,11 +16,9 @@ const AddTutor = () => {
     console.log(taskData);
 
     //
-    axios
-      .post(`${import.meta.env.VITE_API_URL}/add-tutor`, taskData)
-      .then((data) => {
-        console.log(data.data);
-      });
+    axiosSecure.post(`/add-tutor`, taskData).then((data) => {
+      console.log(data.data);
+    });
   };
 
   //
