@@ -13,7 +13,7 @@ const FindTutors = () => {
     });
   }, [axiosSecure]);
 
-  console.log(tutors);
+  // console.log(tutors);
   //
   return (
     <div>

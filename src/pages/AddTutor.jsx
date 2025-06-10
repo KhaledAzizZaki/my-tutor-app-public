@@ -13,7 +13,7 @@ const AddTutor = () => {
     const formData = new FormData(form);
     const taskData = Object.fromEntries(formData.entries());
     taskData.review = 0;
-    console.log(taskData);
+    // console.log(taskData);
 
     //
     axiosSecure.post(`/add-tutor`, taskData).then((data) => {
