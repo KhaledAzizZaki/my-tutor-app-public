@@ -8,6 +8,7 @@ import PrivateRoute from "../provider/PrivateRoute";
 import FindTutors from "../pages/FindTutors";
 import TutorDetails from "../pages/TutorDetails";
 import axios from "axios";
+import MyTutor from "../pages/MyTutor";
 // import useAxiosSecure from "../hooks/useAxiosSecure";
 
 // const axiosSecure = useAxiosSecure;
@@ -43,9 +44,23 @@ export const router = createBrowserRouter([
       },
       {
         path: "/tutor/:id",
-        element: <TutorDetails></TutorDetails>,
+        element: (
+          <PrivateRoute>
+            <TutorDetails></TutorDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           axios(`${import.meta.env.VITE_API_URL}/tutor/${params.id}`),
+      },
+      {
+        path: "/myTutor/:email",
+        element: (
+          <PrivateRoute>
+            <MyTutor></MyTutor>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          axios(`${import.meta.env.VITE_API_URL}/my-tutor/${params.email}`),
       },
     ],
   },
