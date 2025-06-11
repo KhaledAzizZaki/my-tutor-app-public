@@ -34,7 +34,9 @@ const NavBar = () => {
         <NavLink to={`/myTutor/${user?.email}`}>My Tutor</NavLink>
       </li>
       <li>
-        <NavLink to={"/myBookedTutors"}>My booked tutors</NavLink>
+        <NavLink to={`/myBookedTutors/${user?.email}`}>
+          My booked tutors
+        </NavLink>
       </li>
       {!user && (
         <li>

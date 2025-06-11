@@ -35,6 +35,7 @@ const TutorDetails = () => {
       price: price,
       tutorEmail: email,
       email: user.email,
+      name: name,
     };
     // console.log(bookingData);
 
@@ -53,7 +54,7 @@ const TutorDetails = () => {
           transition: Bounce,
         });
       } else {
-        toast.info("Already booked", {
+        toast.info("You Already booked", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
