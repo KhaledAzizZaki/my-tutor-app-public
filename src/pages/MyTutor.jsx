@@ -1,4 +1,4 @@
-import { Trash2 } from "lucide-react";
+import { FileSliders, Trash2 } from "lucide-react";
 import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router";
 import Swal from "sweetalert2";
@@ -69,6 +69,9 @@ const MyTutor = () => {
                   <td>{tutor.price}</td>
                   <td>{tutor.review}</td>
                   <td className="flex flex-wrap items-center gap-2">
+                    <Link to={`/updateTutor/${tutor._id}`}>
+                      <FileSliders />
+                    </Link>
                     <Link onClick={() => handleDelete(tutor._id)}>
                       <Trash2 />
                     </Link>

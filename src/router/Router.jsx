@@ -10,9 +10,7 @@ import TutorDetails from "../pages/TutorDetails";
 import axios from "axios";
 import MyTutor from "../pages/MyTutor";
 import MyBookedTutors from "../pages/MyBookedTutors";
-// import useAxiosSecure from "../hooks/useAxiosSecure";
-
-// const axiosSecure = useAxiosSecure;
+import UpdateTutor from "../pages/UpdateTutor";
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +72,16 @@ export const router = createBrowserRouter([
           axios(
             `${import.meta.env.VITE_API_URL}/my-booked-tutor/${params.email}`
           ),
+      },
+      {
+        path: "/updateTutor/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateTutor></UpdateTutor>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          axios(`${import.meta.env.VITE_API_URL}/tutor/${params.id}`),
       },
     ],
   },

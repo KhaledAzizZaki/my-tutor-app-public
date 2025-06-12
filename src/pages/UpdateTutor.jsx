@@ -1,32 +1,41 @@
-import React, { use } from "react";
-import { AuthContext } from "../provider/AuthContext";
+import React from "react";
+import { useLoaderData } from "react-router";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
-const AddTutor = () => {
-  const { user } = use(AuthContext);
+const UpdateTutor = () => {
+  const data = useLoaderData();
   const axiosSecure = useAxiosSecure();
 
-  //
-  const handleAddTutor = (e) => {
+  const { description, email, image, language, name, price, _id } = data.data;
+  //   console.log(data.data);
+
+  const handleDeleteTutor = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const taskData = Object.fromEntries(formData.entries());
-    taskData.review = 0;
     // console.log(taskData);
 
-    //
-    axiosSecure.post(`/add-tutor`, taskData).then((data) => {
-      console.log(data.data);
+    axiosSecure.put(`/update-tutor/${_id}`, taskData).then((data) => {
+      //   console.log(data.data);
+      if (data.data.modifiedCount) {
+        Swal.fire({
+          icon: "success",
+          title: "Update Tutor",
+          text: "Tutor updated successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     });
   };
 
-  //
   return (
     <div className="hero min-h-screen p-5">
       <div className="hero-content flex-col ">
         <div className="text-center">
-          <h1 className="text-5xl font-bold">Add New Tutor</h1>
+          <h1 className="text-5xl font-bold">Update Tutor</h1>
           <p className="py-6 max-w-3xl">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
             voluptate velit consectetur ipsam doloremque at eius aperiam porro
@@ -36,7 +45,7 @@ const AddTutor = () => {
         </div>
         <div className="card w-full shrink-0 shadow-2xl">
           <div className="card-body p-10">
-            <form onSubmit={handleAddTutor} className="fieldset">
+            <form onSubmit={handleDeleteTutor} className="fieldset">
               {/* name */}
               <label className="label font-medium  text-[16px]">Name</label>
               <input
@@ -44,7 +53,7 @@ const AddTutor = () => {
                 className="input w-full  border-0 border-b-2  rounded-none focus:border-0  mb-5"
                 placeholder="Name"
                 name="name"
-                defaultValue={user.displayName}
+                defaultValue={name}
                 readOnly
               />
 
@@ -55,7 +64,7 @@ const AddTutor = () => {
                 className="input w-full  border-0 border-b-2  rounded-none focus:border-0  mb-5"
                 placeholder="Email"
                 name="email"
-                defaultValue={user.email}
+                defaultValue={email}
                 readOnly
               />
 
@@ -67,6 +76,7 @@ const AddTutor = () => {
                 placeholder="Image"
                 name="image"
                 required
+                defaultValue={image}
               />
 
               {/* Language */}
@@ -77,6 +87,7 @@ const AddTutor = () => {
                 placeholder="Language"
                 name="language"
                 required
+                defaultValue={language}
               />
 
               {/* Price */}
@@ -87,6 +98,7 @@ const AddTutor = () => {
                 placeholder="Price"
                 name="price"
                 required
+                defaultValue={price}
               />
 
               {/* Description */}
@@ -99,9 +111,10 @@ const AddTutor = () => {
                 placeholder="Description"
                 name="description"
                 required
+                defaultValue={description}
               />
 
-              <button className="btn border-0 mt-4">Add Task</button>
+              <button className="btn border-0 mt-4">Update Tutor</button>
             </form>
           </div>
         </div>
@@ -110,4 +123,4 @@ const AddTutor = () => {
   );
 };
 
-export default AddTutor;
+export default UpdateTutor;
