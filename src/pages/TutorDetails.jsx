@@ -35,7 +35,6 @@ const TutorDetails = () => {
       price: price,
       tutorEmail: email,
       email: user.email,
-      name: name,
     };
     // console.log(bookingData);
 
