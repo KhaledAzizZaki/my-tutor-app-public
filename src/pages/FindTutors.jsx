@@ -4,19 +4,29 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const FindTutors = () => {
   const [tutors, setTutors] = useState([]);
+  const [search, setSearch] = useState("");
   const axiosSecure = useAxiosSecure();
 
   //
   useEffect(() => {
-    axiosSecure.get(`/tutor`).then((result) => {
+    axiosSecure.get(`/tutor?searchParams=${search}`).then((result) => {
       setTutors(result.data);
     });
-  }, [axiosSecure]);
+  }, [axiosSecure, search]);
 
-  // console.log(tutors);
+  // console.log(search);
   //
   return (
     <div>
+      <input
+        onChange={(e) => setSearch(e.target.value)}
+        type="text"
+        name="search"
+        placeholder="search"
+        className="input input-bordered w-full"
+        required
+      />
+
       <h4>length: {tutors.length}</h4>
       <div>
         {tutors.map((tutor) => (

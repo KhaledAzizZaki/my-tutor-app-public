@@ -63,16 +63,12 @@ export const router = createBrowserRouter([
           axios(`${import.meta.env.VITE_API_URL}/my-tutor/${params.email}`),
       },
       {
-        path: "/myBookedTutors/:email",
+        path: "/myBookedTutors",
         element: (
           <PrivateRoute>
             <MyBookedTutors></MyBookedTutors>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          axios(
-            `${import.meta.env.VITE_API_URL}/my-booked-tutor/${params.email}`
-          ),
       },
       {
         path: "/updateTutor/:id",

@@ -1,10 +1,19 @@
-import React from "react";
-import { useLoaderData } from "react-router";
+import React, { use, useEffect, useState } from "react";
 import BookedTutorCard from "../components/card/BookedTutorCard";
+import { AuthContext } from "../provider/AuthContext";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const MyBookedTutors = () => {
-  const data = useLoaderData();
-  const tutors = data.data;
+  const { user } = use(AuthContext);
+  const [tutors, setTutors] = useState([]);
+  const axiosSecure = useAxiosSecure();
+
+  //
+  useEffect(() => {
+    axiosSecure.get(`/my-booked-tutor/${user.email}`).then((result) => {
+      setTutors(result.data);
+    });
+  }, [axiosSecure, user]);
 
   return (
     <div>

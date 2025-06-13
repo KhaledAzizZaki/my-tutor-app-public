@@ -63,8 +63,6 @@ const Registration = () => {
 
     handleCreateUser(email, password)
       .then((result) => {
-        navigate("/");
-
         const user = result.user;
         // console.log(user);
 
@@ -80,6 +78,7 @@ const Registration = () => {
               })
               .then(() => {
                 // console.log(data.data);
+                navigate("/");
               });
           })
           .catch((error) => {
