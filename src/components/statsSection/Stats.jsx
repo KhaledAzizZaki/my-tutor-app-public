@@ -11,16 +11,12 @@ const Stats = () => {
     axiosSecure.get(`/tutor`).then((result) => {
       setTutors(result.data);
     });
-
-    axiosSecure.get(`/user`).then((result) => {
-      setUser(result.data);
-    });
   }, [axiosSecure]);
 
   //
   useEffect(() => {
     axiosSecure.get(`/user`).then((result) => {
-      console.log(result.data);
+      setUser(result.data);
     });
   }, [axiosSecure]);
 

@@ -11,6 +11,7 @@ import axios from "axios";
 import MyTutor from "../pages/MyTutor";
 import MyBookedTutors from "../pages/MyBookedTutors";
 import UpdateTutor from "../pages/UpdateTutor";
+import OneLang from "../pages/OneLang";
 
 export const router = createBrowserRouter([
   {
@@ -82,6 +83,12 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           axios(`${import.meta.env.VITE_API_URL}/tutor/${params.id}`),
+      },
+      {
+        path: "/oneLang/:lang",
+        element: <OneLang></OneLang>,
+        loader: ({ params }) =>
+          axios(`${import.meta.env.VITE_API_URL}/one-lang/${params.lang}`),
       },
     ],
   },

@@ -28,7 +28,7 @@ const BookedTutorCard = ({ tutor }) => {
     axiosSecure
       .patch(`/review/${tutorId}`, { email: user?.email })
       .then((data) => {
-        console.log(data.data);
+        // console.log(data.data);
         const isReview = data?.data?.review;
         //
         setTotalReview(isReview);

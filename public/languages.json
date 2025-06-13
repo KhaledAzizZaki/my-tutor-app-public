@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "English",
+    "logo": "https://i.ibb.co/2T7kLdQ/eng-5579061.png"
+  },
+  {
+    "id": 2,
+    "name": "Chinese",
+    "logo": "https://i.ibb.co/RTHNrZzJ/winking-8372297.png"
+  },
+  {
+    "id": 3,
+    "name": "Hindi",
+    "logo": "https://i.ibb.co/7tPW1b9C/hindi-11124419.png"
+  },
+  {
+    "id": 4,
+    "name": "Spanish",
+    "logo": "https://i.ibb.co/zW4679PK/spanish-6724644.png"
+  },
+  {
+    "id": 5,
+    "name": "Arabic",
+    "logo": "https://i.ibb.co/pBmQ4R0g/food-13284800.png"
+  },
+  {
+    "id": 6,
+    "name": "Bengali",
+    "logo": "https://i.ibb.co/nJpvLsv/pandebono-6914722.png"
+  },
+  {
+    "id": 7,
+    "name": "Portuguese",
+    "logo": "https://i.ibb.co/gLM92yjy/cowboy-8583583.png"
+  },
+  {
+    "id": 8,
+    "name": "Russian",
+    "logo": "https://i.ibb.co/pBDRRS20/city-16034901.png"
+  },
+  {
+    "id": 9,
+    "name": "Japanese",
+    "logo": "https://i.ibb.co/1Yznm8k8/rooster-3552309.png"
+  }
+]

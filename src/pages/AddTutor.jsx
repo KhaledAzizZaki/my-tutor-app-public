@@ -15,9 +15,14 @@ const AddTutor = () => {
     taskData.review = 0;
     // console.log(taskData);
 
+    const language = e.target.language.value;
+    const upLanguage = language.charAt(0).toUpperCase() + language.slice(1);
+    // console.log(upLanguage);
+
+    taskData.language = upLanguage;
     //
-    axiosSecure.post(`/add-tutor`, taskData).then((data) => {
-      console.log(data.data);
+    axiosSecure.post(`/add-tutor`, taskData).then(() => {
+      // console.log(data.data);
     });
   };
 

@@ -29,8 +29,8 @@ const Registration = () => {
             email,
             photoURL,
           })
-          .then((data) => {
-            console.log(data.data);
+          .then(() => {
+            // console.log(data.data);
           });
 
         //
@@ -78,8 +78,8 @@ const Registration = () => {
                 email: user.email,
                 photoURL: image,
               })
-              .then((data) => {
-                console.log(data.data);
+              .then(() => {
+                // console.log(data.data);
               });
           })
           .catch((error) => {

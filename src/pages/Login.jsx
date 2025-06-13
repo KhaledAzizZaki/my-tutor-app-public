@@ -29,8 +29,8 @@ const Login = () => {
             email,
             photoURL,
           })
-          .then((data) => {
-            console.log(data.data);
+          .then(() => {
+            // console.log(data.data);
           });
 
         //
@@ -57,10 +57,10 @@ const Login = () => {
 
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+    // console.log(email, password);
 
     handleSignInUser(email, password)
-      .then((result) => {
+      .then(() => {
         navigate(`${location.state ? location.state : "/"}`);
 
         toast.success("Login successfully", {
@@ -75,7 +75,7 @@ const Login = () => {
           transition: Bounce,
         });
 
-        console.log(result.user);
+        // console.log(result.user);
       })
       .catch((error) => {
         const errorCode = error.code;
