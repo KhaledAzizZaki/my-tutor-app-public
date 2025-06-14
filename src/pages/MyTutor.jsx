@@ -1,16 +1,25 @@
 import { FileSliders, Trash2 } from "lucide-react";
-import React, { useState } from "react";
-import { Link, useLoaderData } from "react-router";
+import React, { use, useEffect, useState } from "react";
+import { Link } from "react-router";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { AuthContext } from "../provider/AuthContext";
 
 const MyTutor = () => {
-  const data = useLoaderData();
-  const [myTutor, setMyTutor] = useState(data.data);
+  // const data = useLoaderData();
+  const { user } = use(AuthContext);
+  const [myTutor, setMyTutor] = useState([]);
 
   const axiosSecure = useAxiosSecure();
 
-  //   console.log(data.data);
+  //
+  useEffect(() => {
+    axiosSecure.get(`/my-tutor/${user.email}`).then((result) => {
+      setMyTutor(result.data);
+    });
+  }, [axiosSecure, user.email]);
+
+  console.log(myTutor);
 
   const handleDelete = (id) => {
     // console.log(id);
@@ -46,7 +55,6 @@ const MyTutor = () => {
 
       {/*  */}
       <div>
-        Add commentMore actions
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}

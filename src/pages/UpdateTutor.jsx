@@ -8,7 +8,7 @@ const UpdateTutor = () => {
   const axiosSecure = useAxiosSecure();
 
   const { description, email, image, language, name, price, _id } = data.data;
-  //   console.log(data.data);
+  // console.log(data.data);
 
   const handleDeleteTutor = (e) => {
     e.preventDefault();
