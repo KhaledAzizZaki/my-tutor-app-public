@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { Navigate, NavLink } from "react-router";
 import { AuthContext } from "../../provider/AuthContext";
+import ThemeToggle from "../button/ThemeToggle";
 
 const NavBar = () => {
   const { handleSignOutUser, user } = use(AuthContext);
@@ -45,73 +46,86 @@ const NavBar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+    <div className="bg-blue-700 dark:bg-gray-800 text-gray-300">
+      <div className="navbar shadow-sm px-0 w-11/12 mx-auto">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <div
+              tabIndex={0}
+              role="button"
+              className="lg:hidden rounded-0 pl-0 mr-5 hover:cursor-pointer"
             >
-              {" "}
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
-            </svg>
-          </div>
-
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-          >
-            {link}
-          </ul>
-        </div>
-
-        <h2 className="btn btn-ghost text-xl">TalkTutor</h2>
-      </div>
-
-      <div className="navbar-end">
-        <div className="hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{link}</ul>
-        </div>
-
-        {user && (
-          <div className="relative inline-block group px-3">
-            <button className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img alt="User avatar" src={user.photoURL} />
-              </div>
-            </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {" "}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />{" "}
+              </svg>
+            </div>
 
             <ul
-              className="absolute right-0 mt-3 w-52 bg-base-100 menu menu-sm rounded-box p-2 shadow
-                 opacity-0 invisible group-hover:opacity-100 group-hover:visible
-                 transition-all duration-300 z-10"
+              tabIndex={0}
+              className="menu menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow bg-blue-700 dark:bg-gray-800"
             >
-              <li>
-                <p>Name: {user.displayName}</p>
-              </li>
+              {link}
             </ul>
           </div>
-        )}
 
-        {/* button */}
-        {user ? (
-          <a onClick={handleSignOut} className="btn">
-            Logout
-          </a>
-        ) : (
-          <NavLink to={"/login"} className="btn">
-            Login
-          </NavLink>
-        )}
+          <h2 className="text-2xl pr-4">TalkTutor</h2>
+          <div className="hidden lg:flex">
+            <ul className="menu menu-horizontal px-1">{link}</ul>
+          </div>
+        </div>
+
+        <div className="navbar-end">
+          <ThemeToggle></ThemeToggle>
+
+          {user && (
+            <div className="relative inline-block group pr-3">
+              <button className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full border-2 dark:border-blue-400">
+                  <img alt="User avatar" src={user.photoURL} />
+                </div>
+              </button>
+
+              <ul
+                className="absolute right-0 mt-3 w-52 bg-blue-700 dark:bg-gray-800 menu menu-sm rounded-box p-2 shadow
+                 opacity-0 invisible group-hover:opacity-100 group-hover:visible
+                 transition-all duration-300 z-10"
+              >
+                <li>
+                  <p>Name: {user.displayName}</p>
+                </li>
+              </ul>
+            </div>
+          )}
+
+          {/* button */}
+          {user ? (
+            <a
+              onClick={handleSignOut}
+              className="border-2 px-4 py-1 dark:border-blue-400 dark:text-blue-400 hover:cursor-pointer"
+            >
+              Logout
+            </a>
+          ) : (
+            <NavLink
+              to={"/login"}
+              className="border-2 px-4 py-1 dark:border-blue-400 dark:text-blue-400 hover:cursor-pointer"
+            >
+              Login
+            </NavLink>
+          )}
+        </div>
       </div>
     </div>
   );
