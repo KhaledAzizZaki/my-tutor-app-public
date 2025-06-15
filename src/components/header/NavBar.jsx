@@ -46,7 +46,7 @@ const NavBar = () => {
   );
 
   return (
-    <div className="bg-blue-700 dark:bg-gray-800 text-gray-300">
+    <div className="bg-blue-800 dark:bg-gray-800 text-gray-300">
       <div className="navbar shadow-sm px-0 w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -92,7 +92,7 @@ const NavBar = () => {
           {user && (
             <div className="relative inline-block group pr-3">
               <button className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full border-2 dark:border-blue-400">
+                <div className="w-10  border-2 hover:border-blue-400">
                   <img alt="User avatar" src={user.photoURL} />
                 </div>
               </button>
@@ -113,14 +113,14 @@ const NavBar = () => {
           {user ? (
             <a
               onClick={handleSignOut}
-              className="border-2 px-4 py-1 dark:border-blue-400 dark:text-blue-400 hover:cursor-pointer"
+              className="border-2 px-4 py-1 hover:border-blue-400 hover:text-blue-400 hover:cursor-pointer"
             >
               Logout
             </a>
           ) : (
             <NavLink
               to={"/login"}
-              className="border-2 px-4 py-1 dark:border-blue-400 dark:text-blue-400 hover:cursor-pointer"
+              className="border-2 px-4 py-1 hover:border-blue-400 hover:text-blue-400 hover:cursor-pointer"
             >
               Login
             </NavLink>
