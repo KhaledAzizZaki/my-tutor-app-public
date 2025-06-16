@@ -7,8 +7,16 @@ const BookedTutorCard = ({ tutor }) => {
   const axiosSecure = useAxiosSecure();
 
   // console.log(tutor);
-  const { name, language, price, review, tutorEmail, tutorId, reviewed } =
-    tutor;
+  const {
+    name,
+    language,
+    price,
+    review,
+    tutorEmail,
+    tutorId,
+    reviewed,
+    image,
+  } = tutor;
 
   const [totalReview, setTotalReview] = useState(
     reviewed?.includes(user.email)
@@ -38,14 +46,20 @@ const BookedTutorCard = ({ tutor }) => {
   };
 
   return (
-    <div className="m-5 border p-5">
-      <h1>{name}</h1>
-      <h1>{language}</h1>
-      <h1>{price}</h1>
-      <p>{reviewCount}</p>
-      <button onClick={handleReview} className="btn">
-        {totalReview ? "Reviewed" : "Review"}
-      </button>
+    <div className="m-5 bg-blue-800 p-5 sm:flex gap-5 dark:bg-gray-700">
+      <img src={image} alt="" className="h-[200px] w-[200px] object-cover" />
+      <div className="flex-1 pt-3 text-white ">
+        <h1 className="font-medium text-xl">Name: {name}</h1>
+        <p className="py-3">Language: {language}</p>
+        <p>Price: {price}</p>
+        <p className="py-3">Review: {reviewCount}</p>
+        <button
+          onClick={handleReview}
+          className="border  px-5 py-2 hover:bg-white hover:text-blue-600"
+        >
+          {totalReview ? "Reviewed" : "Review"}
+        </button>
+      </div>
     </div>
   );
 };

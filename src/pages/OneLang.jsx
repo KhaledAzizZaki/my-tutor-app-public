@@ -11,8 +11,7 @@ const OneLang = () => {
   }, [data]);
 
   return (
-    <div>
-      <h1>this is one language</h1>
+    <div className="py-10 w-11/12 mx-auto">
       {lang.map((tutor) => (
         <TutorCard key={tutor._id} tutor={tutor}></TutorCard>
       ))}

@@ -16,11 +16,20 @@ const MyBookedTutors = () => {
   }, [axiosSecure, user]);
 
   return (
-    <div>
-      <h1>this is booked</h1>
-      {tutors.map((tutor) => (
-        <BookedTutorCard key={tutor._id} tutor={tutor}></BookedTutorCard>
-      ))}
+    <div className="bg-white w-11/12 mx-auto my-10 p-10  dark:bg-gray-800">
+      <div className="text-center ">
+        <h1 className="font-bold text-4xl pb-5">My Booked Tutors</h1>
+        <p>
+          Review and manage your upcoming tutoring sessions. Access tutor
+          details, session times, and stay organized with all your booked
+          lessons in one place.
+        </p>
+      </div>
+      <div>
+        {tutors.map((tutor) => (
+          <BookedTutorCard key={tutor._id} tutor={tutor}></BookedTutorCard>
+        ))}
+      </div>
     </div>
   );
 };

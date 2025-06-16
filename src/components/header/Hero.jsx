@@ -14,10 +14,10 @@ const Hero = () => {
           personalized learning tailored to your needs.
         </p>
         <div>
-          <button className="px-5 py-2 mr-4 bg-blue-700 text-white hover:bg-white hover:text-blue-600">
+          <button className="px-5 py-2 mr-4 bg-blue-700 text-white hover:bg-white hover:text-blue-600 hover:border">
             Find
           </button>
-          <button className="border border-blue-500 px-5 py-2 text-blue-500 hover:bg-white hover:text-blue-600">
+          <button className="border border-blue-500 px-5 py-2 text-blue-500 hover:bg-blue-800 hover:text-white">
             Learn More
           </button>
         </div>

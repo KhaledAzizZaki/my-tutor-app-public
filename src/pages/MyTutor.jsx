@@ -50,34 +50,43 @@ const MyTutor = () => {
   };
 
   return (
-    <div>
-      <h1>This is my tutor</h1>
+    <div className="my-20 bg-blue-800 w-11/12 mx-auto text-white p-10">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold">My Tutor</h1>
+        <p className="py-5">
+          Easily manage the tutors you've connected with. View their profiles,
+          track your sessions, and continue learning with the instructors who
+          match your goals and style.
+        </p>
+      </div>
 
       {/*  */}
-      <div>
+      <div className="pt-3">
         <div className="overflow-x-auto">
-          <table className="table">
+          <table className="table ">
             {/* head */}
             <thead>
               <tr>
-                <th>Image</th>
-                <th>Language</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Review</th>
-                <th>Auction</th>
+                <th className="text-white">Image</th>
+                <th className="text-white">Language</th>
+                <th className="text-white">Description</th>
+                <th className="text-white">Price</th>
+                <th className="text-white">Review</th>
+                <th className="text-white">Auction</th>
               </tr>
             </thead>
             <tbody>
               {myTutor.map((tutor) => (
                 <tr key={tutor._id}>
-                  <td>{tutor.image}</td>
+                  <td>
+                    <img src={tutor.image} alt="" className="h-[100px]" />
+                  </td>
                   <td>{tutor.language}</td>
                   <td>{tutor.description}</td>
                   <td>{tutor.price}</td>
                   <td>{tutor.review}</td>
-                  <td className="flex flex-wrap items-center gap-2">
-                    <Link to={`/updateTutor/${tutor._id}`}>
+                  <td className="flex flex-wrap items-center justify-center gap-2 ">
+                    <Link className="" to={`/updateTutor/${tutor._id}`}>
                       <FileSliders />
                     </Link>
                     <Link onClick={() => handleDelete(tutor._id)}>
