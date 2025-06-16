@@ -12,6 +12,7 @@ import MyTutor from "../pages/MyTutor";
 import MyBookedTutors from "../pages/MyBookedTutors";
 import UpdateTutor from "../pages/UpdateTutor";
 import OneLang from "../pages/OneLang";
+import ErrorPage from "../components/errorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -87,5 +88,9 @@ export const router = createBrowserRouter([
           axios(`${import.meta.env.VITE_API_URL}/one-lang/${params.lang}`),
       },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage></ErrorPage>,
   },
 ]);
