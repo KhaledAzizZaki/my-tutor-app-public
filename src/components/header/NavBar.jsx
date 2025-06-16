@@ -92,7 +92,7 @@ const NavBar = () => {
           {user && (
             <div className="relative inline-block group pr-3">
               <button className="btn btn-ghost btn-circle avatar">
-                <div className="w-10  border-2 hover:border-blue-400">
+                <div className="w-10   hover:border-blue-400">
                   <img alt="User avatar" src={user.photoURL} />
                 </div>
               </button>

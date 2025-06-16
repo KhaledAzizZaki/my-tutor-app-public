@@ -24,7 +24,7 @@ const ThemeToggle = () => {
     <div>
       <button
         onClick={() => setIsDark(!isDark)}
-        className="p-2  shadow-md   transition-all duration-300 border-2 border-white hover:dark:border-blue-400 mr-3 hover:cursor-pointer hover:text-blue-400 hover:border-blue-400"
+        className="p-2  shadow-md   transition-all duration-300 mr-3 hover:cursor-pointer hover:text-blue-400 "
       >
         {isDark ? <Sun className="w-5 h-5 " /> : <Moon className="w-5 h-5 " />}
       </button>

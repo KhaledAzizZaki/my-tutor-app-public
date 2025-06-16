@@ -8,7 +8,7 @@ import {
 
 const BookingPlatform = () => {
   return (
-    <div className="w-11/12 mx-auto p-10 bg-white dark:bg-gray-800 my-10">
+    <div className="w-11/12 mx-auto p-10 bg-white dark:bg-gray-800 my-20">
       <h4 className="font-bold text-4xl max-w-[700px] py-10">
         Discover Seamless Learning with Our Innovative Online Tutor Booking
         Platform
