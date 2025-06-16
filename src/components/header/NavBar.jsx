@@ -113,14 +113,14 @@ const NavBar = () => {
           {user ? (
             <a
               onClick={handleSignOut}
-              className="border-2 px-4 py-1 hover:border-blue-400 hover:text-blue-400 hover:cursor-pointer"
+              className="border-2 px-4 py-1 hover:border-blue-400  hover:cursor-pointer hover:bg-white hover:text-blue-600"
             >
               Logout
             </a>
           ) : (
             <NavLink
               to={"/login"}
-              className="border-2 px-4 py-1 hover:border-blue-400 hover:text-blue-400 hover:cursor-pointer"
+              className="border-2 px-4 py-1 hover:border-blue-400  hover:cursor-pointer hover:bg-white hover:text-blue-600"
             >
               Login
             </NavLink>

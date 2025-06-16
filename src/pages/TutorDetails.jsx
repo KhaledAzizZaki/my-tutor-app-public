@@ -69,15 +69,31 @@ const TutorDetails = () => {
   };
 
   return (
-    <div className="m-5 border p-5">
-      <h1>Name: {name}</h1>
-      <p>{language}</p>
-      <p>{description}</p>
-      <p>{price}</p>
-      <p>{review}</p>
-      <NavLink onClick={handleBooking} className={"btn"}>
-        Book Now
-      </NavLink>
+    <div className="m-5 bg-blue-800 dark:bg-gray-800 p-10  text-white my-10 w-11/12 mx-auto">
+      <div className="sm:flex  gap-5">
+        <div>
+          <img
+            src={image}
+            alt=""
+            className="h-[300px] w-[300px] object-cover"
+          />
+        </div>
+        <div className="flex-1 pt-3">
+          <h1 className="font-medium text-2xl">Name: {name}</h1>
+          <p className="py-5">Language: {language}</p>
+        </div>
+      </div>
+      <div className="pt-10">
+        <p>Description: {description}</p>
+        <p className="py-5">Price: {price} $</p>
+        <p className="pb-5 font-medium">Review: {review}</p>
+        <NavLink
+          onClick={handleBooking}
+          className={"border px-5 py-2 hover:bg-white hover:text-blue-600"}
+        >
+          Book Now
+        </NavLink>
+      </div>
     </div>
   );
 };

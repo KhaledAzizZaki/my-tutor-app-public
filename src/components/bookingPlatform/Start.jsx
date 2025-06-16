@@ -18,10 +18,10 @@ const Start = () => {
           </p>
         </div>
         <div>
-          <button className="px-5 py-2 mr-4 bg-blue-700 text-white">
+          <button className="px-5 py-2 mr-4 bg-blue-700 text-white hover:bg-white hover:text-blue-600 hover:border">
             Sign Up
           </button>
-          <button className="border border-blue-500 px-5 py-2 text-blue-500">
+          <button className="border border-blue-500 px-5 py-2 text-blue-500 hover:bg-blue-600 hover:text-white">
             Learn More
           </button>
         </div>
