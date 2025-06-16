@@ -6,11 +6,11 @@ const LanguageCard = ({ lang }) => {
   return (
     <Link
       to={`/oneLang/${lang.name}`}
-      className="p-5 border flex justify-between items-center"
+      className="px-5 py-10 flex justify-between items-center bg-white dark:bg-gray-600"
     >
-      <div>
+      <div className="flex gap-5 items-center">
+        <img src={lang.logo} alt="" width={80} className="p-3 bg-white" />
         <h4>{lang.name}</h4>
-        <img src={lang.logo} alt="" width={50} />
       </div>
       <FaArrowRight />
     </Link>

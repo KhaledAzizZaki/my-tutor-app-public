@@ -11,12 +11,17 @@ const Language = () => {
   }, []);
 
   return (
-    <div>
-      <h1>this is language</h1>
-      <div className="grid grid-cols-3 gap-5">
-        {language.map((lang) => (
-          <LanguageCard key={lang.id} lang={lang}></LanguageCard>
-        ))}
+    <div className="bg-blue-800 dark:bg-gray-800">
+      <div className="w-11/12 mx-auto py-10">
+        <h1 className="text-white font-bold text-3xl py-10 max-w-3xl">
+          Explore Language Categories to Enhance Your Multilingual Communication
+          and Learning Experience
+        </h1>
+        <div className="grid md:grid-cols-3 grid-cols-2 gap-5 pb-10">
+          {language.map((lang) => (
+            <LanguageCard key={lang.id} lang={lang}></LanguageCard>
+          ))}
+        </div>
       </div>
     </div>
   );
