@@ -33,24 +33,24 @@ const UpdateTutor = () => {
 
   return (
     <div className="hero min-h-screen p-5">
-      <div className="hero-content flex-col ">
-        <div className="text-center">
-          <h1 className="text-5xl font-bold">Update Tutor</h1>
+      <div className="hero-content  flex-col ">
+        <div className="text-center ">
+          <h1 className="text-5xl font-bold text-blue-600">Update Tutor</h1>
           <p className="py-6 max-w-3xl">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-            voluptate velit consectetur ipsam doloremque at eius aperiam porro
-            numquam est, itaque ad dolorem modi vero neque exercitationem libero
-            quisquam temporibus!
+            Edit and update tutor details quickly and efficiently. Modify a
+            tutor's profile, teaching language, pricing, availability, and
+            personal bio to keep the information accurate and up-to-date for
+            learners.
           </p>
         </div>
-        <div className="card w-full shrink-0 shadow-2xl">
+        <div className="card w-full shrink-0 shadow-2xl bg-white dark:bg-gray-800">
           <div className="card-body p-10">
             <form onSubmit={handleDeleteTutor} className="fieldset">
               {/* name */}
               <label className="label font-medium  text-[16px]">Name</label>
               <input
                 type="text"
-                className="input w-full  border-0 border-b-2  rounded-none focus:border-0  mb-5"
+                className="input w-full  border-0 border-b-2  rounded-none focus:border-0  mb-5 dark:bg-gray-800"
                 placeholder="Name"
                 name="name"
                 defaultValue={name}
@@ -61,7 +61,7 @@ const UpdateTutor = () => {
               <label className="label font-medium  text-[16px]">Email</label>
               <input
                 type="email"
-                className="input w-full  border-0 border-b-2  rounded-none focus:border-0  mb-5"
+                className="input w-full  border-0 border-b-2  rounded-none focus:border-0  mb-5 dark:bg-gray-800"
                 placeholder="Email"
                 name="email"
                 defaultValue={email}
@@ -72,7 +72,7 @@ const UpdateTutor = () => {
               <label className="label font-medium  text-[16px]">Image</label>
               <input
                 type="text"
-                className="input w-full  border-0 border-b-2  rounded-none focus:border-0  mb-5"
+                className="input w-full  border-0 border-b-2  rounded-none focus:border-0  mb-5 dark:bg-gray-800"
                 placeholder="Image"
                 name="image"
                 required
@@ -83,7 +83,7 @@ const UpdateTutor = () => {
               <label className="label font-medium  text-[16px]">Language</label>
               <input
                 type="text"
-                className="input w-full  border-0 border-b-2  rounded-none focus:border-0  mb-5"
+                className="input w-full  border-0 border-b-2  rounded-none focus:border-0  mb-5 dark:bg-gray-800"
                 placeholder="Language"
                 name="language"
                 required
@@ -94,7 +94,7 @@ const UpdateTutor = () => {
               <label className="label font-medium  text-[16px]">Price</label>
               <input
                 type="text"
-                className="input w-full  border-0 border-b-2  rounded-none focus:border-0  mb-5"
+                className="input w-full  border-0 border-b-2  rounded-none focus:border-0  mb-5 dark:bg-gray-800"
                 placeholder="Price"
                 name="price"
                 required
@@ -107,14 +107,16 @@ const UpdateTutor = () => {
               </label>
               <input
                 type="text"
-                className="input w-full  border-0 border-b-2  rounded-none focus:border-0  mb-5"
+                className="input w-full  border-0 border-b-2  rounded-none focus:border-0  mb-5 dark:bg-gray-800"
                 placeholder="Description"
                 name="description"
                 required
                 defaultValue={description}
               />
 
-              <button className="btn border-0 mt-4">Update Tutor</button>
+              <button className="btn border-0 mt-4 bg-blue-600 shadow-none text-white">
+                Update Tutor
+              </button>
             </form>
           </div>
         </div>

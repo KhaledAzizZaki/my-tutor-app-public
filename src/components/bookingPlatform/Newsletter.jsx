@@ -3,7 +3,7 @@ import React from "react";
 const Newsletter = () => {
   return (
     <div className="">
-      <div className="w-11/12 mx-auto py-20 md:flex justify-between bg-white dark:bg-gray-800 mb-20 px-10 border-2">
+      <div className="w-11/12 mx-auto py-20 md:flex justify-between bg-white dark:bg-gray-800 mb-20 px-10 border-2 border-blue-600">
         <div>
           <h4 className="text-3xl font-bold pb-5">
             Stay Updated with Our Newsletter
@@ -14,7 +14,7 @@ const Newsletter = () => {
           <input
             type="text"
             placeholder="Your Email Here"
-            className="border px-5 py-2 mr-4 "
+            className="border px-5 py-2 mr-4 border-blue-600"
           />
           <button className="px-5 py-2 bg-blue-700 text-white">
             Subscribe Now

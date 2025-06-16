@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
   return (
-    <div className="bg-blue-800">
+    <div className="bg-blue-800 dark:bg-gray-800">
       <footer className="footer sm:footer-horizontal  text-white py-20 w-11/12 mx-auto px-0">
         <aside>
           <h2 className="font-bold text-2xl">TalkTutor</h2>

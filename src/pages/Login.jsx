@@ -99,42 +99,39 @@ const Login = () => {
 
   //
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero min-h-screen">
       <div className="hero-content flex-col">
-        <div className="text-center">
-          <h1 className="text-5xl font-bold">Login to Your Account</h1>
-          <p className="py-6 max-w-[700px]">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, nam
-            amet? Quo, quis ducimus, asperiores pariatur dolores excepturi,
-            molestias fugiat laborum quia libero quasi doloremque esse hic
-            eligendi atque repellendus.
-          </p>
-        </div>
-
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="card dark:bg-gray-800 bg-white w-[400px] shrink-0 shadow-2xl">
           <div className="card-body">
+            <h1 className="text-5xl font-bold py-10 text-center text-blue-600">
+              Login
+            </h1>
             <form onSubmit={handleSignIn} className="fieldset">
               {/* email */}
               <label className="label">Email</label>
               <input
                 type="email"
-                className="input"
+                className="input w-full dark:bg-gray-800"
                 placeholder="Email"
                 name="email"
                 required
               />
 
               {/* password */}
-              <label className="label">Password</label>
-              <input
-                type="password"
-                className="input"
-                placeholder="Password"
-                name="password"
-                required
-              />
+              <div className="py-5">
+                <label className="label">Password</label>
+                <input
+                  type="password"
+                  className="input w-full dark:bg-gray-800"
+                  placeholder="Password"
+                  name="password"
+                  required
+                />
+              </div>
 
-              <button className="btn btn-neutral mt-4">Login</button>
+              <button className="btn btn-neutral mt-4 bg-blue-600 border-0">
+                Login
+              </button>
 
               {error && <p className="text-red-600">{error}</p>}
             </form>
@@ -142,7 +139,7 @@ const Login = () => {
             {/* Google */}
             <button
               onClick={googleSignIn}
-              className="btn bg-white text-black border-neutral"
+              className="btn bg-white text-blue-600 dark:bg-gray-800 border-blue-600 shadow-none"
             >
               <svg
                 aria-label="Google logo"
@@ -176,7 +173,7 @@ const Login = () => {
 
             <p>
               New to this site? please{" "}
-              <Link to="/Registration" className="text-[#1da774] underline">
+              <Link to="/Registration" className="text-blue-600 underline">
                 Register
               </Link>
             </p>

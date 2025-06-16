@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import { Bounce, toast } from "react-toastify";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const Registration = () => {
   const { handleCreateUser, handleGoogleSignIn, updateUser, setUser } =
@@ -79,6 +80,14 @@ const Registration = () => {
               .then(() => {
                 // console.log(data.data);
                 navigate("/");
+
+                Swal.fire({
+                  icon: "success",
+                  title: "Create Account",
+                  text: "Account created successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
               });
           })
           .catch((error) => {
@@ -116,52 +125,56 @@ const Registration = () => {
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero min-h-screen">
       <div className="hero-content flex-col">
-        <div className="text-center">
-          <h1 className="text-5xl font-bold">Registration now!</h1>
-          <p className="py-6 max-w-[700px]">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio quam
-            quos eaque necessitatibus minus voluptatibus, omnis placeat odit ab
-            consequuntur ea nulla aut impedit nesciunt. Animi fuga ex voluptatum
-            alias?
-          </p>
-        </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="card dark:bg-gray-800 bg-white w-[400px] shrink-0 shadow-2xl">
           <div className="card-body">
             <form onSubmit={handleSignUp} className="fieldset">
+              <h1 className="text-5xl font-bold text-center py-10 text-blue-600">
+                Registration now!
+              </h1>
+
               {/* Name */}
-              <label className="label">Name</label>
-              <input
-                type="name"
-                name="name"
-                className="input"
-                placeholder="Name"
-                required
-              />
+              <div className="py-5">
+                <label className="label">Name</label>
+                <input
+                  type="name"
+                  name="name"
+                  className="input w-full dark:bg-gray-800"
+                  placeholder="Name"
+                  required
+                />
+              </div>
+
               {/* Image */}
-              <label className="label">Image URL</label>
-              <input
-                type="text"
-                className="input"
-                placeholder="Image URL"
-                name="image"
-                required
-              />
+              <div className="">
+                <label className="label">Image URL</label>
+                <input
+                  type="text"
+                  className="input w-full dark:bg-gray-800"
+                  placeholder="Image URL"
+                  name="image"
+                  required
+                />
+              </div>
+
               {/* Email */}
-              <label className="label">Email</label>
-              <input
-                type="email"
-                className="input"
-                placeholder="Email"
-                name="email"
-                required
-              />
+              <div className="py-5">
+                <label className="label">Email</label>
+                <input
+                  type="email"
+                  className="input w-full dark:bg-gray-800"
+                  placeholder="Email"
+                  name="email"
+                  required
+                />
+              </div>
+
               {/* Password */}
               <label className="label">Password</label>
               <input
                 type="password"
-                className="input"
+                className="input w-full dark:bg-gray-800"
                 placeholder="Password"
                 name="password"
                 required
@@ -170,13 +183,15 @@ const Registration = () => {
                 title="Must be more than 6 characters, lowercase letter, uppercase letter"
               />
 
-              <button className="btn btn-neutral mt-4">Register</button>
+              <button className="btn btn-neutral mt-4 bg-blue-600 border-0">
+                Register
+              </button>
             </form>
 
             {/* Google */}
             <button
               onClick={googleSignIn}
-              className="btn bg-white text-black border-neutral"
+              className="btn bg-white text-blue-600 dark:bg-gray-800 shadow-none border-blue-600 "
             >
               <svg
                 aria-label="Google logo"
@@ -209,7 +224,7 @@ const Registration = () => {
             </button>
             <p>
               Already have an account? please{" "}
-              <Link to="/login" className="text-[#1da774] underline">
+              <Link to="/login" className="text-blue-600 underline">
                 Login
               </Link>
             </p>

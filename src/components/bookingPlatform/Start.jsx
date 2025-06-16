@@ -9,7 +9,7 @@ const Start = () => {
       }}
     >
       <div className="w-11/12 mx-auto py-20 md:flex justify-between">
-        <div>
+        <div className="text-black">
           <h4 className="text-3xl font-bold pb-5">
             Start Your Learning Journey Today
           </h4>
