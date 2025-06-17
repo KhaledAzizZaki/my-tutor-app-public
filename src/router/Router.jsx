@@ -50,8 +50,6 @@ export const router = createBrowserRouter([
             <TutorDetails></TutorDetails>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          axios(`${import.meta.env.VITE_API_URL}/tutor/${params.id}`),
       },
       {
         path: "/myTutor",

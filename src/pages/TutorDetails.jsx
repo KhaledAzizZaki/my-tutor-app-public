@@ -1,17 +1,27 @@
-import React, { use } from "react";
-import { NavLink, useLoaderData } from "react-router";
+import React, { use, useEffect, useState } from "react";
+import { NavLink, useParams } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Bounce, toast } from "react-toastify";
 
 const TutorDetails = () => {
-  const data = useLoaderData();
+  const [data, setData] = useState([]);
   const { user } = use(AuthContext);
   const axiosSecure = useAxiosSecure();
 
+  const { id } = useParams();
+  console.log(id);
+
+  //
+  useEffect(() => {
+    axiosSecure.get(`/tutor/${id}`).then((result) => {
+      setData(result.data);
+    });
+  }, [axiosSecure, id]);
+
   //   console.log(data.data);
   const { _id, name, language, description, price, review, image, email } =
-    data.data;
+    data;
 
   const handleBooking = () => {
     if (user.email === email) {

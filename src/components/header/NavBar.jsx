@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { Navigate, NavLink } from "react-router";
 import { AuthContext } from "../../provider/AuthContext";
 import ThemeToggle from "../button/ThemeToggle";
+import { Fade } from "react-awesome-reveal";
 
 const NavBar = () => {
   const { handleSignOutUser, user } = use(AuthContext);
@@ -80,10 +81,14 @@ const NavBar = () => {
             </ul>
           </div>
 
-          <h2 className="text-2xl pr-4">TalkTutor</h2>
-          <div className="hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">{link}</ul>
-          </div>
+          <Fade direction="left" triggerOnce>
+            <h2 className="text-2xl pr-4">TalkTutor</h2>
+          </Fade>
+          <Fade direction="down" cascade triggerOnce>
+            <div className="hidden lg:flex">
+              <ul className="menu menu-horizontal px-1">{link}</ul>
+            </div>
+          </Fade>
         </div>
 
         <div className="navbar-end">

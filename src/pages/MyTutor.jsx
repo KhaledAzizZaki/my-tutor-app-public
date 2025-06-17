@@ -50,7 +50,7 @@ const MyTutor = () => {
   };
 
   return (
-    <div className="my-20 bg-blue-800 w-11/12 mx-auto text-white p-10">
+    <div className="my-20 bg-blue-800 dark:bg-gray-800 w-11/12 mx-auto text-white p-10">
       <div className="text-center">
         <h1 className="text-4xl font-bold">My Tutor</h1>
         <p className="py-5">
