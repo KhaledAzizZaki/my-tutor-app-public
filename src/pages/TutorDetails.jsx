@@ -10,7 +10,7 @@ const TutorDetails = () => {
   const axiosSecure = useAxiosSecure();
 
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
 
   //
   useEffect(() => {

@@ -76,8 +76,6 @@ export const router = createBrowserRouter([
             <UpdateTutor></UpdateTutor>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          axios(`${import.meta.env.VITE_API_URL}/tutor/${params.id}`),
       },
       {
         path: "/oneLang/:lang",

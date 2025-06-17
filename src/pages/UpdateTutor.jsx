@@ -1,13 +1,25 @@
-import React from "react";
-import { useLoaderData } from "react-router";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const UpdateTutor = () => {
-  const data = useLoaderData();
+  const [data, setData] = useState([]);
   const axiosSecure = useAxiosSecure();
 
-  const { description, email, image, language, name, price, _id } = data.data;
+  const { id } = useParams();
+  // console.log(id);
+
+  //
+  useEffect(() => {
+    axiosSecure.get(`/tutor/${id}`).then((result) => {
+      setData(result.data);
+    });
+  }, [axiosSecure, id]);
+
+  // console.log(data);
+
+  const { description, email, image, language, name, price, _id } = data;
   // console.log(data.data);
 
   const handleDeleteTutor = (e) => {

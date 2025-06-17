@@ -19,7 +19,7 @@ const MyTutor = () => {
     });
   }, [axiosSecure, user.email]);
 
-  console.log(myTutor);
+  // console.log(myTutor);
 
   const handleDelete = (id) => {
     // console.log(id);
