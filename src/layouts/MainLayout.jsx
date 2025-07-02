@@ -9,7 +9,7 @@ const MainLayout = () => {
     <div className="bg-blue-100 dark:bg-black text-black dark:text-gray-300">
       <NavBar></NavBar>
 
-      <div className="min-h-[calc(100vh-300px)]">
+      <div className="min-h-[calc(100vh-300px)] pt-20">
         <Outlet></Outlet>
       </div>
 

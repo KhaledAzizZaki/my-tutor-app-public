@@ -28,7 +28,7 @@ const Hero = () => {
       <div>
         <img
           className=" p-10"
-          src="https://i.ibb.co/C5xB4wYd/Gemini-Generated-Image-wd4juxwd4juxwd4j.png"
+          src="https://i.ibb.co/hJT9BPj4/imageedit-1-5330627867.png"
           alt=""
         />
       </div>

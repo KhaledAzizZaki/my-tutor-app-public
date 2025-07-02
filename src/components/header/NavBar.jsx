@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { useState, useEffect, use } from "react";
 import { Navigate, NavLink } from "react-router";
 import { AuthContext } from "../../provider/AuthContext";
 import ThemeToggle from "../button/ThemeToggle";
@@ -7,20 +7,36 @@ import { Fade } from "react-awesome-reveal";
 const NavBar = () => {
   const { handleSignOutUser, user } = use(AuthContext);
 
-  //
+  const [showNav, setShowNav] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // Handle scroll direction
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down
+        setShowNav(false);
+      } else {
+        // Scrolling up
+        setShowNav(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   const handleSignOut = () => {
     handleSignOutUser()
       .then(() => {
         Navigate("/signin");
-        // Sign-out successful.
       })
-      .catch(() => {
-        // console.log(error);
-        // An error happened.
-      });
+      .catch(() => {});
   };
 
-  //
   const link = (
     <>
       <li>
@@ -47,8 +63,12 @@ const NavBar = () => {
   );
 
   return (
-    <div className="bg-blue-800 dark:bg-gray-800 text-gray-300">
-      <div className="navbar shadow-sm px-0 w-11/12 mx-auto">
+    <div
+      className={`bg-blue-800 dark:bg-gray-800 text-gray-300 fixed top-0 w-full z-50 transition-transform duration-300 shadow-2xl ${
+        showNav ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
+      <div className="navbar  px-0 w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -63,19 +83,17 @@ const NavBar = () => {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                {" "}
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
+                />
               </svg>
             </div>
-
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow bg-blue-700 dark:bg-gray-800"
+              className="menu menu-sm dropdown-content rounded-box z-10 mt-3 w-52 p-2 shadow bg-blue-700 dark:bg-gray-800"
             >
               {link}
             </ul>
@@ -86,26 +104,24 @@ const NavBar = () => {
           </Fade>
           <Fade direction="down" cascade triggerOnce>
             <div className="hidden lg:flex">
-              <ul className="menu menu-horizontal px-1">{link}</ul>
+              <ul className="menu menu-horizontal px-1 flex-nowrap">{link}</ul>
             </div>
           </Fade>
         </div>
 
         <div className="navbar-end">
-          <ThemeToggle></ThemeToggle>
-
+          <ThemeToggle />
           {user && (
             <div className="relative inline-block group pr-3">
               <button className="btn btn-ghost btn-circle avatar">
-                <div className="w-10   hover:border-blue-400">
+                <div className="w-10 hover:border-blue-400">
                   <img alt="User avatar" src={user.photoURL} />
                 </div>
               </button>
-
               <ul
                 className="absolute right-0 mt-3 w-52 bg-blue-700 dark:bg-gray-800 menu menu-sm rounded-box p-2 shadow
                  opacity-0 invisible group-hover:opacity-100 group-hover:visible
-                 transition-all duration-300 z-10"
+                 transition-all duration-300 z-20"
               >
                 <li>
                   <p>Name: {user.displayName}</p>
@@ -113,19 +129,17 @@ const NavBar = () => {
               </ul>
             </div>
           )}
-
-          {/* button */}
           {user ? (
             <a
               onClick={handleSignOut}
-              className="border-2 px-4 py-1 hover:border-blue-400  hover:cursor-pointer hover:bg-white hover:text-blue-600"
+              className="border-2 px-4 py-1 hover:border-blue-400 hover:cursor-pointer hover:bg-white hover:text-blue-600"
             >
               Logout
             </a>
           ) : (
             <NavLink
               to={"/login"}
-              className="border-2 px-4 py-1 hover:border-blue-400  hover:cursor-pointer hover:bg-white hover:text-blue-600"
+              className="border-2 px-4 py-1 hover:border-blue-400 hover:cursor-pointer hover:bg-white hover:text-blue-600"
             >
               Login
             </NavLink>
