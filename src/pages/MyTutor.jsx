@@ -79,19 +79,25 @@ const MyTutor = () => {
               {myTutor.map((tutor) => (
                 <tr key={tutor._id}>
                   <td>
-                    <img src={tutor.image} alt="" className="h-[100px]" />
+                    <img
+                      src={tutor.image}
+                      alt=""
+                      className="w-24 h-24 object-cover rounded"
+                    />
                   </td>
                   <td>{tutor.language}</td>
                   <td>{tutor.description}</td>
                   <td>{tutor.price}</td>
                   <td>{tutor.review}</td>
-                  <td className="flex flex-wrap items-center justify-center gap-2 ">
-                    <Link className="" to={`/updateTutor/${tutor._id}`}>
-                      <FileSliders />
-                    </Link>
-                    <Link onClick={() => handleDelete(tutor._id)}>
-                      <Trash2 />
-                    </Link>
+                  <td>
+                    <div className="flex justify-center items-center gap-3">
+                      <Link to={`/updateTutor/${tutor._id}`}>
+                        <FileSliders className="cursor-pointer hover:text-green-400" />
+                      </Link>
+                      <button onClick={() => handleDelete(tutor._id)}>
+                        <Trash2 className="cursor-pointer hover:text-red-400" />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

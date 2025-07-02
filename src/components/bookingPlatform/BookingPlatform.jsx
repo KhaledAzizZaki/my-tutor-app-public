@@ -9,9 +9,9 @@ import {
 
 const BookingPlatform = () => {
   return (
-    <div className="w-11/12 mx-auto p-10 bg-white dark:bg-gray-800 my-20">
+    <div className="w-11/12 mx-auto px-10 bg-white dark:bg-gray-800 my-28 py-20">
       <Fade direction="right" triggerOnce>
-        <h4 className="font-bold text-4xl max-w-[700px] py-10">
+        <h4 className="font-bold text-4xl max-w-[700px] pb-10">
           Discover Seamless Learning with Our Innovative Online Tutor Booking
           Platform
         </h4>

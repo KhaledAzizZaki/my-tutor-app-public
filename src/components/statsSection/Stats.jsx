@@ -42,7 +42,7 @@ const Stats = () => {
   const totalLanguages = uniqueLanguages.size;
 
   return (
-    <div className="grid md:grid-cols-4 grid-cols-2 w-11/12 mx-auto py-10 text-center text-gray-200 gap-5">
+    <div className="grid md:grid-cols-4 grid-cols-2 w-11/12 mx-auto py-20 text-center text-gray-200 gap-5">
       <Fade direction="up" triggerOnce>
         <div className="bg-blue-800 shadow-xl flex flex-col items-center justify-center p-10">
           <h1 className=" font-black text-3xl">{tutors.length}</h1>

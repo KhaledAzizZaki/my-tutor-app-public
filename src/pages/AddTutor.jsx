@@ -44,17 +44,18 @@ const AddTutor = () => {
       <div className="hero-content flex-col ">
         <div className="card w-full shrink-0 shadow-2xl">
           <div className="card-body p-10 bg-white dark:bg-gray-800">
-            <form onSubmit={handleAddTutor} className="fieldset">
-              <h1 className="text-5xl font-bold max-w-3xl text-center p-10 text-blue-600">
+            <form onSubmit={handleAddTutor} className="">
+              <h1 className="text-4xl sm:text-5xl font-bold text-center text-blue-600 mb-8">
                 Add New Tutor
               </h1>
-              <div className="sm:flex gap-10 py-10">
+
+              <div className=" gap-10 py-6 space-y-6">
                 {/* name */}
                 <div>
                   <label className="label font-medium  text-[16px]">Name</label>
                   <input
                     type="text"
-                    className="input w-full border-b-2  rounded-none focus:border-0 mt-3 dark:bg-gray-800"
+                    className="input w-full  rounded-none focus:border-0 mt-3 dark:bg-gray-800"
                     placeholder="Name"
                     name="name"
                     defaultValue={user.displayName}
@@ -88,7 +89,7 @@ const AddTutor = () => {
                 required
               />
 
-              <div className="sm:flex gap-10 py-10">
+              <div className="sm:flex gap-10 py-6 space-y-6">
                 {/* Language */}
                 <div>
                   <label className="label font-medium  text-[16px]">
@@ -130,8 +131,8 @@ const AddTutor = () => {
                 required
               />
 
-              <button className="btn border-0 mt-8 bg-blue-600 text-white shadow-none">
-                Add Task
+              <button className="btn bg-blue-600 hover:bg-blue-700 text-white w-full mt-6">
+                Add Tutor
               </button>
             </form>
           </div>

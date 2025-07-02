@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa";
 
 const Testimonials = () => {
   return (
-    <div className="w-11/12 mx-auto bg-white dark:bg-gray-800 my-20 p-10 py-20">
+    <div className="w-11/12 mx-auto bg-white dark:bg-gray-800 my-28 p-10 py-20">
       <h1 className="font-bold text-4xl">Customer Testimonials</h1>
       <p className="pt-5">This platform transformed my learning experience!</p>
       <div className=" my-10 grid md:grid-cols-2 gap-5">

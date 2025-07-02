@@ -13,7 +13,7 @@ const Language = () => {
 
   return (
     <div className="bg-blue-800 dark:bg-gray-800">
-      <div className="w-11/12 mx-auto py-10">
+      <div className="w-11/12 mx-auto py-20">
         <Fade direction="right" delay={10} triggerOnce>
           <h1 className="text-white font-bold text-3xl py-10 max-w-3xl">
             Explore Language Categories to Enhance Your Multilingual
